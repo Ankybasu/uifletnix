@@ -7,6 +7,7 @@ import { SearchComponent } from '../search/search.component';
 import { NavbarComponent } from '../navbar/navbar.component';
 import { RouterModule } from '@angular/router';
 import { filter, lastValueFrom } from 'rxjs';
+import { CacheService } from '../../services/cache.service';
 @Component({
   selector: 'app-home',
   standalone: true,
@@ -25,7 +26,7 @@ export class HomeComponent implements OnInit {
   hide:boolean=false;
   pageSizeOptions: number[] = [15, 30, 45]; // Default options
   selectedMediaType: string='all';
-  constructor(private dataService: DataService) {}
+  constructor(private dataService: DataService,private cacheService:CacheService) {}
 
   ngOnInit() {
     this.loadData(); // Fetch data on component load
@@ -36,8 +37,23 @@ export class HomeComponent implements OnInit {
     this.isLoading = true;
     let userAge=25;
     let type=this.selectedMediaType==='all'?undefined:this.selectedMediaType;
+    const cacheKey = `data-page-${page}-type-${type}-userAge-${userAge}`;
+    const cachedData = this.cacheService.get(cacheKey);
+
+    if (cachedData) {
+      // Use cached data
+      this.totalCount = cachedData.totalCount;
+      this.shows = cachedData.data;
+      this.filteredMedia = this.shows;
+      this.totalPages = cachedData.totalPages;
+      this.currentPage = cachedData.currentPage;
+      this.isLoading = false;
+      return;
+    }
+
     await lastValueFrom(this.dataService.getData(page, 15,type, userAge)).then(
       (response) => {
+        this.cacheService.set(cacheKey, response, 600000); // Cache for 10 minutes
         this.totalCount=response.totalCount;
         this.shows = response.data;
         this.filteredMedia=this.shows;

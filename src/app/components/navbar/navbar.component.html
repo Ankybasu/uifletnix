@@ -2,11 +2,21 @@
         <div class="nav-wrapper">
             <div class="logo-container">
                 <img class="logo" src="assets/images/fletImg.png" alt="Logo">
-                <h2>FletNix</h2>
+                <div class="hamburger-menu">
+                    <h2>FletNix</h2>
+                    <div class="bar">Home</div>
+                    <div class="bar">                      
+                        <div class="filter-container">
+                        <label for="media-filter">Select Media Type:</label>
+                        <select id="media-filter" [(ngModel)]="selectedMediaType" (change)="filterMedia()">
+                          <option value="all">All</option>
+                          <option value="Movie">Movies</option>
+                          <option value="TV Show">TV Shows</option>
+                        </select>
+                      </div></div>
+                  </div>
             </div>
             <nav>
-                <input class="hidden" type="checkbox" id="menuToggle">
-
                 <div class="nav-container">
                     <ul class="nav-tabs">
                         <li class="nav-tab">Home</li>

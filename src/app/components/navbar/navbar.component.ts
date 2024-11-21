@@ -22,4 +22,10 @@ export class NavbarComponent {
     this.emitToggle.emit(this.toggle);
     console.log(this.toggle)
   }
+  menuOpen: boolean = false;
+
+  toggleMenu() {
+    this.menuOpen = !this.menuOpen;
+  }
+
 }
