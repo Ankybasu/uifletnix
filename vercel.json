@@ -1,19 +1,4 @@
 {
-  "version": 2,
-  "builds": [
-    {
-      "src": "package.json",
-      "use": "@vercel/node"
-    },
-    {
-      "src": "dist/uifletnix/**/*",
-      "use": "@vercel/static"
-    }
-  ],
-  "routes": [
-    {
-      "src": "/(.*)",
-      "dest": "/dist/uifletnix/$1"
-    }
-  ]
+  "rewrites":[{"source":"(.*)","destination":"/"}]
+  
 }
