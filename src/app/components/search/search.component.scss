@@ -1,0 +1,45 @@
+
+  .col{
+      background-color: #ccc;
+  }
+ 
+  .search-icon,
+  .reset-icon {
+    position: absolute;
+    right: 10px;
+    cursor: pointer;
+    font-size: 16px;
+  }
+  
+  .reset-icon {
+    right: 30px; /* Positioning the reset icon slightly left from the search icon */
+  }
+  
+  .search-icon:hover,
+  .reset-icon:hover {
+    color: #007bff;
+  }
+  .search-container {
+    position: relative;
+    display: flex;
+    align-items: center;
+  }
+  
+  .search-input {
+    width: 100%;
+    padding: 10px 40px 10px 10px; /* space for the icons */
+    box-sizing: border-box;
+  }
+  
+  .search-icon, .reset-icon {
+    position: absolute;
+    right: 10px; /* Position icons at the end */
+    cursor: pointer;
+  }
+  
+  .reset-icon {
+    right: 30px; /* Adjust spacing between the search and reset icon */
+  }
+  
+
+  

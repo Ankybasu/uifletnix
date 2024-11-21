@@ -26,13 +26,14 @@
             "tsConfig": "tsconfig.app.json",
             "inlineStyleLanguage": "scss",
             "assets": [
-              {
-                "glob": "**/*",
-                "input": "public"
-              }
-            ],
+              "src/assets",
+              "src/favicon.ico"
+            ]
+            ,
             "styles": [
-              "src/styles.scss"
+              "src/styles.scss",
+              "node_modules/@angular/material/prebuilt-themes/indigo-pink.css"  ,
+              "node_modules/font-awesome/css/font-awesome.min.css" 
             ],
             "scripts": []
           },
@@ -85,14 +86,14 @@
             "tsConfig": "tsconfig.spec.json",
             "inlineStyleLanguage": "scss",
             "assets": [
-              {
-                "glob": "**/*",
-                "input": "public"
-              }
-            ],
+              "src/assets",
+              "src/favicon.ico"
+            ]
+            ,
             "styles": [
-              "src/styles.scss"
-            ],
+              "src/styles.scss",
+              "node_modules/@angular/material/prebuilt-themes/indigo-pink.css",
+              "node_modules/font-awesome/css/font-awesome.min.css"              ],
             "scripts": []
           }
         }

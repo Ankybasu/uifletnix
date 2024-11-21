@@ -1,8 +1,22 @@
-<h2>Search</h2>
-<input [(ngModel)]="searchQuery" placeholder="Search..." />
-<button (click)="searchData()">Search</button>
-<ul>
-  <li *ngFor="let result of searchResults">
-    {{ result.title }} - {{ result.director }}
-  </li>
-</ul>
+
+<div class="search-container">
+    <input
+      type="text"
+      placeholder="Search by title or cast"
+      [(ngModel)]="searchQuery"
+      (input)="searchMovies($event)"
+      class="search-input"
+    />
+    <i class="fa fa-search search-icon" (click)="searchMovies(searchQuery)"></i>
+    <i class="fa fa-times reset-icon" (click)="resetSearch()"></i>
+  </div>
+  
+  
+  <div class="col" *ngIf="filteredData.length > 0;">
+    <div *ngFor="let movie of filteredData">
+      <h3>{{ movie?.title }}</h3>
+      <!-- <p>Cast: {{ getCastString(movie.cast) }}</p> -->
+    </div>
+  </div>
+  
+  
