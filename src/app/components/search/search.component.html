@@ -14,7 +14,7 @@
   
   <div class="col" *ngIf="filteredData.length > 0;">
     <div *ngFor="let movie of filteredData">
-      <h3>{{ movie?.title }}</h3>
+      <h3 (click)="navigate(movie.show_id)">{{ movie?.title }}</h3>
       <!-- <p>Cast: {{ getCastString(movie.cast) }}</p> -->
     </div>
   </div>

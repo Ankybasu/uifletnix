@@ -32,4 +32,5 @@ export class DataService {
   getShowDetails(showId: string): Observable<any> {
     return this.http.get(`${this.baseUrl}/${showId}`);
   }
+  
 }

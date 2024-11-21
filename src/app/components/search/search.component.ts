@@ -1,6 +1,7 @@
 import { CommonModule } from '@angular/common';
 import { Component, Input } from '@angular/core';
 import { FormsModule } from '@angular/forms';
+import { Router } from '@angular/router';
 import { DataService } from '../../services/data.service';
 
 @Component({
@@ -17,7 +18,7 @@ export class SearchComponent {
   @Input() totalData:any[]=[];
   titleMatches: boolean = false;
   castMatches:boolean=false;
-  constructor(private dataService: DataService) {}
+  constructor(private dataService: DataService,private router: Router) {}
 
   onSearch() {
     const query = this.searchQuery.toLowerCase();
@@ -74,5 +75,9 @@ export class SearchComponent {
   resetSearch(): void {
     this.searchQuery = '';         // Reset the search query
     this.filteredData = []; // Reset the filtered data to original
+  }
+  navigate(showId: string): void {
+    this.resetSearch();
+    this.router.navigate(['/details', showId]);
   }
 }

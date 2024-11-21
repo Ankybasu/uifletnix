@@ -1,0 +1,6 @@
+<app-navbar (filteredData)="filterDataReload($event)" (emitToggle)="emitToggle($event)"></app-navbar>
+<div *ngIf="isLoading" class="spinner-container">
+    <div class="spinner"></div>
+  </div>  
+
+  <app-search [totalData]="shows" *ngIf="hide"></app-search>
