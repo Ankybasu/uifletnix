@@ -1,0 +1,8 @@
+<h2>Search</h2>
+<input [(ngModel)]="searchQuery" placeholder="Search..." />
+<button (click)="searchData()">Search</button>
+<ul>
+  <li *ngFor="let result of searchResults">
+    {{ result.title }} - {{ result.director }}
+  </li>
+</ul>
