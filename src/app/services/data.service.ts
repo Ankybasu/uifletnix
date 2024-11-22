@@ -6,8 +6,8 @@ import { Observable } from 'rxjs';
   providedIn: 'root'
 })
 export class DataService {
-  private baseUrl =//"http://localhost:3000/data";//local
-   'https://flet-nix-back-end.vercel.app/data'; 
+  private baseUrl ="http://localhost:3000/data";//local
+   //'https://flet-nix-back-end.vercel.app/data'; 
   constructor(private http: HttpClient) {}
 
   // Fetch paginated and filtered data
