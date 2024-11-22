@@ -1,45 +1,51 @@
-<div class="form-container">
-    <h2>Login</h2>
-    <form [formGroup]="loginForm" (ngSubmit)="login()">
-      <div class="form-group">
-        <label for="email">Email:</label>
-        <input
-          type="email"
-          id="email"
-          formControlName="email"
-          class="form-control"
-        />
-        <div
-          *ngIf="loginForm.controls['email'].invalid && loginForm.controls['email'].touched"
-          class="error"
-        >
-          Valid email is required
+<div class="container">
+    <div class="image-section">
+      <img src="assets/images/fletImg.png" alt="App Logo" class="logo bounce"  />
+      <h1 class="app-heading">Welcome to FletNix</h1>
+    </div>
+    <div class="form-container">
+      <h2>Login</h2>
+      <form [formGroup]="loginForm" (ngSubmit)="login()">
+        <div class="form-group">
+          <label for="email">Email:</label>
+          <input
+            type="email"
+            id="email"
+            formControlName="email"
+            class="form-control"
+          />
+          <div
+            *ngIf="loginForm.controls['email'].invalid && loginForm.controls['email'].touched"
+            class="error"
+          >
+            Valid email is required
+          </div>
         </div>
-      </div>
   
-      <div class="form-group">
-        <label for="password">Password:</label>
-        <input
-          type="password"
-          id="password"
-          formControlName="password"
-          class="form-control"
-        />
-        <div
-          *ngIf="
-            loginForm.controls['password'].invalid &&
-            loginForm.controls['password'].touched
-          "
-          class="error"
-        >
-          Password must be at least 6 characters
+        <div class="form-group">
+          <label for="password">Password:</label>
+          <input
+            type="password"
+            id="password"
+            formControlName="password"
+            class="form-control"
+          />
+          <div
+            *ngIf="
+              loginForm.controls['password'].invalid &&
+              loginForm.controls['password'].touched
+            "
+            class="error"
+          >
+            Password must be at least 6 characters
+          </div>
         </div>
-      </div>
   
-      <button type="submit" class="btn btn-primary" [disabled]="loginForm.invalid">
-        Login
-      </button>
-    </form>
-    <p *ngIf="errorMessage" class="error">{{ errorMessage }}</p>
+        <button type="submit" class="btn-primary" [disabled]="loginForm.invalid">
+          Login
+        </button>
+      </form>
+      <p *ngIf="errorMessage" class="error">{{ errorMessage }}</p>
+    </div>
   </div>
   

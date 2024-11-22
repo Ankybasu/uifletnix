@@ -1,12 +1,15 @@
 import { CommonModule } from '@angular/common';
-import { Component, OnInit } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
 import { ActivatedRoute, RouterLink, RouterModule } from '@angular/router';
+import { CacheService } from '../../services/cache.service';
 import { DataService } from '../../services/data.service';
+import { NavbarComponent } from '../navbar/navbar.component';
+import { SearchComponent } from '../search/search.component';
 
 @Component({
   selector: 'app-detailspage',
   standalone: true,
-  imports: [CommonModule],
+  imports: [CommonModule,NavbarComponent,SearchComponent],
   templateUrl: './detailspage.component.html',
   styleUrl: './detailspage.component.scss'
 })
@@ -15,14 +18,17 @@ export class DetailspageComponent {
   itemDetails: any; // Holds the item's details
   isLoading: boolean = true; // Loading state
   errorMessage: string = ''; // Error message
-
+  hide: boolean=true;
+  @Input() shows: any[] = [];
   constructor(
     private route: ActivatedRoute,
-    private dataService: DataService
+    private dataService: DataService,
+    private cacheService:CacheService
   ) {}
 
   ngOnInit(): void {
     // Subscribe to route parameter changes
+    this.shows=this.cacheService.getData();
     this.route.paramMap.subscribe((params) => {
       const showId = params.get('show_id');
       if (showId) {
@@ -47,6 +53,9 @@ export class DetailspageComponent {
         this.isLoading = false; // Loading complete with error
       }
     );
+  }
+  emitToggle(toggle:boolean){
+    this.hide=toggle;
   }
   
 }

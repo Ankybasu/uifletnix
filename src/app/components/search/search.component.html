@@ -7,13 +7,12 @@
       (input)="searchMovies($event)"
       class="search-input"
     />
-    <i class="fa fa-search search-icon" (click)="searchMovies(searchQuery)"></i>
     <i class="fa fa-times reset-icon" (click)="resetSearch()"></i>
   </div>
   
   
   <div class="col" *ngIf="filteredData.length > 0;">
-    <div *ngFor="let movie of filteredData">
+    <div *ngFor="let movie of filteredData" class="movie-item">
       <h3 (click)="navigate(movie.show_id)">{{ movie?.title }}</h3>
       <!-- <p>Cast: {{ getCastString(movie.cast) }}</p> -->
     </div>

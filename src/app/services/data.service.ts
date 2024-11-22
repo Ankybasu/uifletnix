@@ -1,14 +1,20 @@
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpParams } from '@angular/common/http';
-import { Observable } from 'rxjs';
+import { BehaviorSubject, Observable } from 'rxjs';
 
 @Injectable({
   providedIn: 'root'
 })
 export class DataService {
-  private baseUrl =
-  //"http://localhost:3000/data";//local
-   'https://flet-nix-back-end.vercel.app/data'; 
+  private baseUrl = "http://localhost:3000/data";//local
+  // 'https://flet-nix-back-end.vercel.app/data'; 
+  private dataSource = new BehaviorSubject<any>('all');
+  data$ = this.dataSource.asObservable();
+
+  updateData(data: any) {
+    this.dataSource.next(data);
+  }
+
   constructor(private http: HttpClient) {}
 
   // Fetch paginated and filtered data

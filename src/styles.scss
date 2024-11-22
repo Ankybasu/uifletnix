@@ -1,10 +1,61 @@
-/* You can add global styles to this file, and also import other style files */
 .mat-mdc-paginator-page-size {
     display: none !important;
 }
 .mat-mdc-paginator {
     // background-color: #00050d!important;
-    color: #000!important;
+    color: #fff!important;
+    background-color: #0d66ac!important;
     font-style: normal!important;
     font-weight: 800!important;
 }
+body {
+    background-color: #f7f7f7; /* Light background color */
+    color: #333333; /* Text color for general readability */
+    font-family: 'Arial', sans-serif; /* Global font family */
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    height: 100vh;
+  }
+  
+  /* Setting a global font for the app */
+  * {
+    font-family: 'Arial', sans-serif; /* Global font family */
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+  }
+  
+  /* Link styles */
+  a {
+    text-decoration: none;
+    color: inherit; /* Ensures links inherit color */
+  }
+  
+  h1, h2, h3, h4, h5, h6 {
+    font-family: 'Arial', sans-serif; /* Global font family for headings */
+    font-weight: bold;
+  }
+  
+  button {
+    font-family: 'Arial', sans-serif; /* Global font family for buttons */
+  }
+  
+  /* Form Inputs */
+  input, textarea, select {
+    font-family: 'Arial', sans-serif;
+    color: #333333;
+    background-color: #f9f9f9;
+    border: 1px solid #ddd; /* Soft border for inputs */
+  }
+  
+  /* Specific body background color */
+  html, body {
+    background-color: #f7f7f7; /* Light background */
+  }
+  
+  /* Optional: To provide some base styling for your main content */
+  .container {
+    background-color: #ffffff; /* Lighter background for main container */
+  }
+  

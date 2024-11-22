@@ -35,7 +35,14 @@ export class HomeComponent implements OnInit {
   // Method to load data from the API
   async loadData(page: number = 1) {
     this.isLoading = true;
-    let userAge=25;
+    this.dataService.data$.subscribe((data) => {
+      if (data) {
+       this.selectedMediaType=data;
+      }
+    });
+
+    const userAgeString = localStorage.getItem('userAge'); // Retrieve the value from localStorage
+    const userAge = userAgeString ? parseInt(userAgeString, 10) : undefined; // Parse to number or set undefined if null
     let type=this.selectedMediaType==='all'?undefined:this.selectedMediaType;
     const cacheKey = `data-page-${page}-type-${type}-userAge-${userAge}`;
     const cachedData = this.cacheService.get(cacheKey);
@@ -60,6 +67,7 @@ export class HomeComponent implements OnInit {
         this.totalPages = response.totalPages;
         this.currentPage = response.currentPage;
         this.isLoading = false;
+        this.cacheService.setData(this.shows);
       },
       (error) => {
         this.errorMessage = 'Error fetching data!';
@@ -67,20 +75,6 @@ export class HomeComponent implements OnInit {
       }
     );
   }
-
-  // // Method to go to the next page
-  // nextPage() {
-  //   if (this.currentPage < this.totalPages) {
-  //     this.loadData(this.currentPage + 1);
-  //   }
-  // }
-
-  // // Method to go to the previous page
-  // prevPage() {
-  //   if (this.currentPage > 1) {
-  //     this.loadData(this.currentPage - 1);
-  //   }
-  // }
 
   onPageChange(event: PageEvent) {
     this.pageSize = event.pageSize;

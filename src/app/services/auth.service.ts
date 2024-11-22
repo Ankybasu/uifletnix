@@ -6,8 +6,8 @@ import { BehaviorSubject, Observable } from 'rxjs';
   providedIn: 'root',
 })
 export class AuthService {
-  private baseUrl =//"http://localhost:3000/auth";//local
-  'https://flet-nix-back-end.vercel.app/auth'; 
+  private baseUrl ="http://localhost:3000/auth";//local
+  //'https://flet-nix-back-end.vercel.app/auth'; 
   private loggedIn = new BehaviorSubject<boolean>(this.isTokenAvailable());
 
   isLoggedIn = this.loggedIn.asObservable();

@@ -5,8 +5,15 @@ import { Injectable } from '@angular/core';
 })
 export class CacheService {
   private cache = new Map<string, { value: any; expiry: number }>();
+  private cacheData:any[]=[];
 
   constructor() {}
+  setData(cacheData: any[]){
+    this.cacheData=cacheData;
+  }
+  getData(){
+    return this.cacheData;
+  }
 
   /**
    * Sets a value in the cache.

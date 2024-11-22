@@ -4,23 +4,20 @@
                 <img class="logo" src="assets/images/fletImg.png" alt="Logo">
                 <div class="hamburger-menu">
                     <h2>FletNix</h2>
-                    <div class="bar">Home</div>
-                    <div class="bar">                      
-                        <div class="filter-container">
-                        <label for="media-filter">Select Media Type:</label>
-                        <select id="media-filter" [(ngModel)]="selectedMediaType" (change)="filterMedia()">
-                          <option value="all">All</option>
-                          <option value="Movie">Movies</option>
-                          <option value="TV Show">TV Shows</option>
-                        </select>
-                      </div></div>
+                    <ul class="bar">
+                    <li class="bar" (click)="navigateTo('all')">Home</li>
+                        <li class="bar" (click)="navigateTo('Movie')">Movies</li>
+                        <li class="bar" (click)="navigateTo('TV Show')">TV Shows</li>
+                        <li class="bar" [routerLink]="['/logout']">Logout</li>
+                    </ul>
                   </div>
             </div>
             <nav>
                 <div class="nav-container">
                     <ul class="nav-tabs">
-                        <li class="nav-tab">Home</li>
-                        <li class="nav-tab">Movies</li>
+                        <li class="nav-tab" (click)="navigateTo('all')">Home</li>
+                        <li class="nav-tab" (click)="navigateTo('Movie')">Movies</li>
+                        <li class="nav-tab" (click)="navigateTo('TV Show')">TV Shows</li>
                         <li class="nav-tab">    
                             <div class="search-box">
                                 <button class="btn-search" [ngStyle]="{'color':toggle?'#fff':'#000'}"(click)="searchShowHide()"><i class="fa fa-search"></i></button>    

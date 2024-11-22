@@ -1,71 +1,160 @@
-.form-container {
-    max-width: 400px;
-    margin: 50px auto;
-    padding: 20px;
-    background: #f8f9fa;
-    border-radius: 8px;
-    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+.container {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    height: 100vh; // Full viewport height
+    text-align: center; // Center align text in the container
+    background-color: #f7f7f7; // Light background for better contrast
+  }
+  
+  .image-section {
+    margin-bottom: 2rem;
+  
+    .logo {
+      width: 100px; // Adjust the size of the logo as needed
+      height: auto;
+      margin-bottom: 1rem;
+      animation: fadeIn 1.5s ease-in-out;
+    }
+  
+    .app-heading {
+      font-size: 2rem;
+      font-weight: bold;
+      color: #0d66ac; // Bright highlight color
+      animation: glow 1.5s infinite alternate;
+      text-transform: uppercase;
+      letter-spacing: 1.5px;
+    }
+  }
+  
+  .form-container {
+    background: #ffffff; // Lighter background for form
+    border-radius: 12px;
+    padding: 2rem 2.5rem;
+    width: 100%;
+    max-width: 450px;
+    box-shadow: 0px 8px 16px rgba(0, 0, 0, 0.1); // Subtle shadow for modern look
+    animation: zoomIn 1s ease-in-out;
   
     h2 {
       text-align: center;
-      margin-bottom: 20px;
-      color: #333;
+      margin-bottom: 1.5rem;
+      font-size: 2rem;
+      font-weight: bold;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      color: #333333; // Dark color for contrast
+      background: linear-gradient(90deg, #0d66ac, lighten(#0d66ac, 15%)); // Smooth gradient effect
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
     }
   
-    .form-group {
-      margin-bottom: 15px;
+    form {
+      display: flex;
+      flex-direction: column;
   
-      label {
-        display: block;
-        font-weight: bold;
-        margin-bottom: 5px;
-      }
+      .form-group {
+        margin-bottom: 1.5rem;
   
-      .form-control {
-        width: 100%;
-        padding: 10px;
-        border: 1px solid #ddd;
-        border-radius: 4px;
+        label {
+          font-weight: bold;
+          margin-bottom: 0.5rem;
+          display: inline-block;
+          color: #333333; // Dark text for labels
+        }
   
-        &:focus {
-          border-color: #007bff;
-          outline: none;
+        .form-control {
+          width: 100%;
+          padding: 0.75rem;
+          border: 2px solid #ddd; // Subtle border
+          border-radius: 6px;
+          background: #f9f9f9;
+          color: #333;
+          font-size: 1rem;
+          transition: all 0.3s ease;
+  
+          &:focus {
+            outline: none;
+            border-color: #0d66ac; // Highlighted border color on focus
+            background: #ffffff; // Focus state with clean background
+          }
+        }
+  
+        .error {
+          margin-top: 0.5rem;
+          font-size: 0.85rem;
+          color: #e74c3c;
         }
       }
   
-      .error {
-        color: #d9534f;
-        font-size: 12px;
+      .btn-primary {
+        padding: 0.8rem;
+        font-size: 1.2rem;
+        font-weight: bold;
+        border: none;
+        border-radius: 6px;
+        background: linear-gradient(135deg, #0d66ac, lighten(#0d66ac, 15%));
+        color: #ffffff;
+        cursor: pointer;
+        transition: all 0.3s ease;
+  
+        &:hover {
+          background: linear-gradient(135deg, lighten(#0d66ac, 15%), #0d66ac);
+          transform: translateY(-2px);
+          box-shadow: 0px 4px 8px rgba(13, 102, 172, 0.4);
+        }
+  
+        &:active {
+          transform: translateY(0);
+        }
+  
+        &:disabled {
+          background: #bdc3c7;
+          cursor: not-allowed;
+        }
       }
     }
   
-    .btn {
-      display: block;
-      width: 100%;
-      padding: 10px;
-      border: none;
-      border-radius: 4px;
-      background: #007bff;
-      color: #fff;
-      font-weight: bold;
-      cursor: pointer;
-      transition: background 0.3s;
-  
-      &:hover {
-        background: #0056b3;
-      }
-  
-      &:disabled {
-        background: #ccc;
-        cursor: not-allowed;
-      }
-    }
-  
-    .success {
-      color: #5cb85c;
-      font-size: 14px;
+    .error {
+      margin-top: 1rem;
+      font-size: 1rem;
+      color: #e74c3c;
       text-align: center;
-      margin-top: 10px;
+    }
+  }
+  
+  /* Glow animation for the app heading */
+  @keyframes glow {
+    from {
+      text-shadow: 0 0 10px #0d66ac, 0 0 20px lighten(#0d66ac, 15%);
+    }
+    to {
+      text-shadow: 0 0 20px #0d66ac, 0 0 40px lighten(#0d66ac, 25%);
+    }
+  }
+  
+  /* Zoom-in animation for the form container */
+  @keyframes zoomIn {
+    from {
+      transform: scale(0.9);
+      opacity: 0.5;
+    }
+    to {
+      transform: scale(1);
+      opacity: 1;
+    }
+  }
+  
+  /* Fade-in animation for the logo */
+  @keyframes fadeIn {
+    from {
+      opacity: 0;
+      transform: translateY(-20px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
     }
   }
   

@@ -23,9 +23,17 @@ export class RegisterComponent {
   ) {
     this.registerForm = this.fb.group({
       email: ['', [Validators.required, Validators.email]],
-      password: ['', [Validators.required, Validators.minLength(6)]],
+      password: [
+        '',
+        [
+          Validators.required,
+          Validators.minLength(12),
+          Validators.pattern(/^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&#^])[A-Za-z\d@$!%*?&#^]{12,}$/),
+        ],
+      ],
       age: ['', [Validators.required, Validators.min(1)]],
     });
+    
   }
 
   register() {
@@ -33,6 +41,7 @@ export class RegisterComponent {
       const { email, password, age } = this.registerForm.value;
       this.authService.register(email, password, age).subscribe(
         () => {
+          localStorage.setItem('userAge',age);
           this.successMessage = 'Registration successful!';
           this.router.navigate(['/login']);
         },

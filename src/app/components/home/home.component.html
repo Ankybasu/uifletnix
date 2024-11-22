@@ -1,44 +1,51 @@
-<app-navbar (filteredData)="filterDataReload($event)" (emitToggle)="emitToggle($event)"></app-navbar>
-<div *ngIf="isLoading" class="spinner-container">
-    <div class="spinner"></div>
-  </div>  
+<app-navbar 
+  (filteredData)="filterDataReload($event)" 
+  (emitToggle)="emitToggle($event)" 
+  class="fixed-navbar">
+</app-navbar>
 
-  <app-search [totalData]="shows" *ngIf="hide"></app-search>
-  <!-- <div *ngIf="totalPages > 1">
-    <button (click)="prevPage()" [disabled]="currentPage <= 1">Previous</button>
-    <span>{{ currentPage }} of {{ totalPages }}</span>
-    <button (click)="nextPage()" [disabled]="currentPage >= totalPages">Next</button>
-  </div> -->
-  <div>
-    <div class="ag-format-container" *ngIf="!isLoading && shows.length > 0">
-        <div class="ag-courses_box" >
-          <div *ngFor="let show of filteredMedia" class="ag-courses_item">
-            <div  [routerLink]="['/details', show.show_id]" class="ag-courses-item_link">
-              <div class="ag-courses-item_bg"></div>
-      
-              <div class="ag-courses-item_title">
-                {{ show.title }}
-              </div>
-      
-              <div class="ag-courses-item_date-box">
-                Duration:
-                <span class="ag-courses-item_date">
-                  {{show.duration}}
-                </span>
-              </div>
+<app-search 
+  [totalData]="shows" 
+  *ngIf="hide" 
+  class="fixed-search">
+</app-search>
+
+<div class="content-container">
+  <div *ngIf="isLoading" class="spinner-container">
+    <div class="spinner"></div>
+  </div>
+</div>
+
+
+<div class="content-wrapper">
+  <div *ngIf="!isLoading && shows.length > 0">
+    <div class="ag-format-container">
+      <div class="ag-courses_box">
+        <div *ngFor="let show of filteredMedia" class="ag-courses_item">
+          <div [routerLink]="['/details', show.show_id]" class="ag-courses-item_link">
+            <div class="ag-courses-item_bg"></div>
+            <div class="ag-courses-item_title">{{ show.title }}</div>
+            <div class="ag-courses-item_date-box">
+              Duration: <span class="ag-courses-item_date">{{ show.duration }}</span>
             </div>
+            <div class="ag-courses-item_date-box">
+              Rating: <span class="ag-courses-item_date">{{ show.rating }}</span>
+            </div>
+              <div class="ag-courses-item_date-box">
+                Type: <span class="ag-courses-item_date">{{ show.type }}</span>
+              </div>
           </div>
         </div>
       </div>
-      <div *ngIf="!isLoading && shows.length === 0">
-        No shows found.
-      </div>
-      
-    <mat-paginator 
-      [length]="totalCount" 
-      [pageSizeOptions]="[]"
-      [pageSizeOptions]="pageSizeOptions" 
-      (page)="onPageChange($event)">
-    </mat-paginator>
+    </div>
   </div>
-  
+  <div *ngIf="!isLoading && shows.length === 0">
+    No shows found.
+  </div>
+  <mat-paginator 
+    [length]="totalCount" 
+    [pageSizeOptions]="[]" 
+    [pageSizeOptions]="pageSizeOptions" 
+    (page)="onPageChange($event)">
+  </mat-paginator>
+</div>

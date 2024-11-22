@@ -1,7 +1,8 @@
 import { CommonModule } from '@angular/common';
 import { Component, EventEmitter, Input, Output } from '@angular/core';
 import { FormsModule } from '@angular/forms';
-import { RouterModule } from '@angular/router';
+import { Router, RouterModule } from '@angular/router';
+import { DataService } from '../../services/data.service';
 
 @Component({
   selector: 'app-navbar',
@@ -10,7 +11,15 @@ import { RouterModule } from '@angular/router';
   templateUrl: './navbar.component.html',
   styleUrl: './navbar.component.scss'
 })
+    
+
 export class NavbarComponent {
+  constructor(private router: Router,private dataService:DataService) {
+    this.dataService.data$.subscribe((type) => {
+      this.selectedMediaType = type;
+    });
+  }
+
   toggle:boolean=false;
   selectedMediaType: string = 'all'; // Default to 'all'
   @Output() filteredData=new EventEmitter();
@@ -28,5 +37,11 @@ export class NavbarComponent {
   toggleMenu() {
     this.menuOpen = !this.menuOpen;
   }
-
+  navigateTo(navigate:string){
+    this.dataService.updateData(navigate);
+    this.filteredData.emit(navigate);
+    if(this.router.url==='/home')
+    return;
+    this.router.navigate(['/home']);
+  }
 }

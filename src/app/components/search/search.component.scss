@@ -1,6 +1,6 @@
 
   .col{
-      background-color: #ccc;
+      background-color: #fff;
   }
  
   .search-icon,
@@ -42,4 +42,37 @@
   }
   
 
+/* Style for each movie item */
+.movie-item {
+    padding: 15px;
+    background: linear-gradient(135deg, #ffffff, #f4f4f4); /* Light gradient for a modern look */
+    border-radius: 8px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); /* Soft shadow for depth */
+    color: #333333; /* Dark text for contrast */
+    transition: all 0.3s ease-in-out; /* Smooth transition for hover effects */
+    font-family: 'Arial', sans-serif; /* Match the font style */
+  }
+  
+  /* Hover effect: Subtle highlight and shadow */
+  .movie-item:hover {
+    background: linear-gradient(135deg, #f8f8f8, #ffffff); /* Slightly lighter gradient */
+    box-shadow: 0 8px 12px rgba(0, 0, 0, 0.15); /* Enhanced shadow on hover */
+    transform: translateY(-4px); /* Lift the item slightly */
+    cursor: pointer; /* Indicate interactivity */
+  }
+  
+  /* Movie title styling */
+  .movie-item h3 {
+    font-size:0.75rem; /* Larger, readable font size */
+    font-weight: bold; /* Highlight the title */
+    color: #0d66ac; /* Match the login page highlight color */
+    margin: 0;
+    transition: color 0.3s ease; /* Smooth color change on hover */
+  }
+  
+  /* Change title color on hover */
+  .movie-item:hover h3 {
+    color: #064779; /* Slightly darker highlight color */
+  }
+  
   
