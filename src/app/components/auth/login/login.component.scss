@@ -157,4 +157,14 @@
       transform: translateY(0);
     }
   }
+  .register-link a {
+    color: #0d66ac;
+    text-decoration: none;
+    font-weight: bold;
+    transition: color 0.3s ease;
+  }
   
+  .register-link a:hover {
+    color: #084d85;
+    text-decoration: underline;
+  }

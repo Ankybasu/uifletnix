@@ -25,7 +25,9 @@ export class NavbarComponent {
   @Output() filteredData=new EventEmitter();
   @Output() emitToggle=new EventEmitter();
   filterMedia(){
+    this.dataService.updateData(this.selectedMediaType);
     this.filteredData.emit(this.selectedMediaType)
+    this.router.navigate(['/home']);
   }
   searchShowHide(){
     this.toggle=!this.toggle;
