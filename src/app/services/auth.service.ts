@@ -23,14 +23,6 @@ export class AuthService {
     return this.http.post(`${this.baseUrl}/login`, { email, password });
   }
 
-  // Fetch User Profile
-  getProfile(token: string): Observable<any> {
-    localStorage.setItem('token', token);
-    this.loggedIn.next(true);
-    return this.http.get(`${this.baseUrl}/profile`, {
-      headers: { Authorization: `Bearer ${token}` },
-    });
-  }
   logout(): void {
     localStorage.removeItem('token');
     this.loggedIn.next(false);

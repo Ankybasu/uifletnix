@@ -21,7 +21,6 @@
                     <ul class="nav-tabs">
                         <li class="nav-tab">Home</li>
                         <li class="nav-tab">Movies</li>
-                        <li class="nav-tab">TV Shows</li>
                         <li class="nav-tab">    
                             <div class="search-box">
                                 <button class="btn-search" [ngStyle]="{'color':toggle?'#fff':'#000'}"(click)="searchShowHide()"><i class="fa fa-search"></i></button>    
@@ -36,7 +35,7 @@
                                 </select>
                               </div>
                         </li>
-                          
+                        <li class="nav-tab"><div [routerLink]="['/logout']">Logout</div></li>   
                     </ul>
                 </div>
             </nav>
