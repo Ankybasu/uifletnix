@@ -1,13 +1,12 @@
 import { CommonModule } from '@angular/common';
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, RouterLink, RouterModule } from '@angular/router';
-import { MenuComponent } from '../../menu/menu.component';
 import { DataService } from '../../services/data.service';
 
 @Component({
   selector: 'app-detailspage',
   standalone: true,
-  imports: [CommonModule,MenuComponent],
+  imports: [CommonModule],
   templateUrl: './detailspage.component.html',
   styleUrl: './detailspage.component.scss'
 })

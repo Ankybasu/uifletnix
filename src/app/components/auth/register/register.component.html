@@ -1,0 +1,64 @@
+<div class="form-container">
+    <h2>Create Account</h2>
+    <form [formGroup]="registerForm" (ngSubmit)="register()">
+      <div class="form-group">
+        <label for="email">Email:</label>
+        <input
+          type="email"
+          id="email"
+          formControlName="email"
+          class="form-control"
+        />
+        <div
+          *ngIf="
+            registerForm.controls['email'].invalid &&
+            registerForm.controls['email'].touched
+          "
+          class="error"
+        >
+          Valid email is required
+        </div>
+      </div>
+  
+      <div class="form-group">
+        <label for="password">Password:</label>
+        <input
+          type="password"
+          id="password"
+          formControlName="password"
+          class="form-control"
+        />
+        <div
+          *ngIf="
+            registerForm.controls['password'].invalid &&
+            registerForm.controls['password'].touched
+          "
+          class="error"
+        >
+          Password must be at least 6 characters
+        </div>
+      </div>
+  
+      <div class="form-group">
+        <label for="age">Age:</label>
+        <input type="number" id="age" formControlName="age" class="form-control" />
+        <div
+          *ngIf="registerForm.controls['age'].invalid && registerForm.controls['age'].touched"
+          class="error"
+        >
+          Age is required
+        </div>
+      </div>
+  
+      <button
+        type="submit"
+        class="btn btn-primary"
+        [disabled]="registerForm.invalid"
+      >
+        Register
+      </button>
+    </form>
+    <p *ngIf="errorMessage" class="error">{{ errorMessage }}</p>
+    <p *ngIf="successMessage" class="success">{{ successMessage }}</p>
+  </div>
+  
