@@ -12,8 +12,8 @@ export const routes: Routes = [
     //  { path: '**', redirectTo: '/home' }, // Wildcard route for 404
         {path:'search',component:SearchComponent,canActivate: [authGuard]},
         {path:'home',component:HomeComponent,canActivate: [authGuard]},
-        { path: 'details/:show_id', component: DetailspageComponent,canActivate: [authGuard] },
+        {path: 'details/:show_id', component: DetailspageComponent,canActivate: [authGuard] },
         {path:'register',component:RegisterComponent},
         {path:'login',component:LoginComponent},
-        { path: 'logout', component: LogoutComponent },
+        {path: 'logout', component: LogoutComponent },
 ];

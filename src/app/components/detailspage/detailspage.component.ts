@@ -18,7 +18,7 @@ export class DetailspageComponent {
   itemDetails: any; // Holds the item's details
   isLoading: boolean = true; // Loading state
   errorMessage: string = ''; // Error message
-  hide: boolean=true;
+  hide:boolean=false;
   @Input() shows: any[] = [];
   constructor(
     private route: ActivatedRoute,

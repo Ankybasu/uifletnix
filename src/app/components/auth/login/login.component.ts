@@ -29,15 +29,15 @@ export class LoginComponent {
   login() {
     if (this.loginForm.valid) {
       const { email, password } = this.loginForm.value;
-      this.authService.login(email, password).subscribe(
-        (response) => {
+      this.authService.login(email, password).subscribe({
+        next:(response) => {
           localStorage.setItem('token', response.token);
           this.router.navigate(['/home']);
         },
-        (error) => {
+        error:(error) => {
           this.errorMessage = error.error.message || 'Login failed';
         }
-      );
+      });
     }
   }
 }
