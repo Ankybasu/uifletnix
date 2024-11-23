@@ -31,6 +31,7 @@ export class LoginComponent {
       const { email, password } = this.loginForm.value;
       this.authService.login(email, password).subscribe({
         next:(response) => {
+          localStorage.setItem('userAge',response.user.age);
           localStorage.setItem('token', response.token);
           this.router.navigate(['/home']);
         },

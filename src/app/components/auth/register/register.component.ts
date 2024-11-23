@@ -41,7 +41,6 @@ export class RegisterComponent {
       const { email, password, age } = this.registerForm.value;
       this.authService.register(email, password, age).subscribe(
         () => {
-          localStorage.setItem('userAge',age);
           this.successMessage = 'Registration successful!';
           this.router.navigate(['/login']);
         },
