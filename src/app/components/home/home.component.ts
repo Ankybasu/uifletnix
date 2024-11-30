@@ -61,6 +61,8 @@ export class HomeComponent implements OnInit {
     await lastValueFrom(this.dataService.getData(page, 15,type, userAge)).then(
       (response) => {
         this.cacheService.set(cacheKey, response, 600000); // Cache for 10 minutes
+        console.log(response)
+        response.data.sort((a:any,b:any)=>new Date(b.date_added).getTime()-new Date(a.date_added).getTime())
         this.totalCount=response.totalCount;
         this.shows = response.data;
         this.filteredMedia=this.shows;
